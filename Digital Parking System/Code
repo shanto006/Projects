@@ -1,0 +1,71 @@
+#include <Wire.h>
+#include <Servo.h>
+
+Servo myservo;
+
+int IR1 = 2;
+int IR2 = 3;
+
+int Slot = 4;           // Total number of parking slots
+
+int flag1 = 0;
+int flag2 = 0;
+
+void setup() {
+  Serial.begin(9600); 
+
+  pinMode(IR1, INPUT);
+  pinMode(IR2, INPUT);
+  
+  myservo.attach(4);
+  myservo.write(100);
+
+  Serial.println("-------------------------");
+  Serial.println("     DIGITAL PARKING     ");
+  Serial.println("        SYSTEM           ");
+  Serial.println("-------------------------");
+  delay(2000);
+  Serial.println("System Ready...");
+}
+
+void loop() {
+  if (digitalRead(IR1) == LOW && flag1 == 0) {
+    if (Slot > 0) {
+      flag1 = 1;
+      if (flag2 == 0) {
+        myservo.write(0);
+        Slot = Slot - 1;
+      }
+    } else {
+      Serial.println("-------------------------");
+      Serial.println("      SORRY :(           ");
+      Serial.println("    Parking Full         ");
+      Serial.println("-------------------------");
+      delay(3000);
+    }
+  }
+
+  if (digitalRead(IR2) == LOW && flag2 == 0) {
+    flag2 = 1;
+    if (flag1 == 0) {
+      myservo.write(0);
+      Slot = Slot + 1;
+    }
+  }
+
+  if (flag1 == 1 && flag2 == 1) {
+    delay(1000);
+    myservo.write(100);
+    flag1 = 0;
+    flag2 = 0;
+  }
+
+  // Show the current slot count
+  Serial.println("-------------------------");
+  Serial.println("     WELCOME!            ");
+  Serial.print("     Slots Left: ");
+  Serial.println(Slot);
+  Serial.println("-------------------------");
+
+  delay(1000); 
+}
