@@ -1,0 +1,53 @@
+# 🚗 DIGITAL PARKING SYSTEM – Arduino-Based 4 Slot Model
+
+A simple yet effective Arduino project that simulates a **4-slot digital car parking system** using IR sensors and an LCD. This project aims to demonstrate real-time slot monitoring and display using basic electronic components and embedded programming.
+
+---
+
+## 🔧 Project Overview
+
+**Digital Parking System** is an offline smart parking solution designed using an Arduino UNO. The model efficiently manages four parking slots by detecting the presence of vehicles using IR sensors and updating the information on a 16x2 LCD display.
+
+---
+
+## 📋 Features
+
+- 📍 Real-time parking slot detection  
+- 📺 LCD display showing status of each slot  
+- 🔌 Completely offline and hardware-based  
+- 🔄 Modular design, easy to scale and simulate  
+- 🎓 Educational and beginner-friendly
+
+---
+
+## 🧠 Components Used
+
+| Component              | Quantity | Description                           |
+|------------------------|----------|---------------------------------------|
+| Arduino UNO            | 1        | Main microcontroller                  |
+| IR Sensor Modules      | 4        | Vehicle detection for each slot       |
+| 16x2 LCD Display       | 1        | Displays available and occupied slots |
+| Breadboard + Wires     | As needed| Circuit prototyping                   |
+| Resistors              | As needed| For signal conditioning (if required) |
+
+---
+
+## 🖥️ Circuit Description
+
+Each IR sensor is placed at one of the 4 parking slots. When a vehicle is detected (IR beam is broken), the Arduino updates the slot status and reflects the change on the LCD. The display shows a summary of available vs. occupied slots in real time.
+
+---
+
+## 💻 Programming Details
+
+- Language: **Arduino C/C++**
+- IDE: **Arduino IDE**
+- Logic: IR sensor outputs HIGH/LOW based on vehicle presence, and the LCD prints dynamic values accordingly.
+
+---
+
+## 👨‍💻 Author
+
+[**Saiful Islam Shanto**](https://github.com/shanto006)
+
+---
